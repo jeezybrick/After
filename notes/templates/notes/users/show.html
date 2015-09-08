@@ -14,7 +14,7 @@
             <li role="presentation" {% if user.is_private %} class="disabled" {% endif %}>
                 <a href="{% url 'user_notes' user.username %}">Заметки
                       <span class="badge">
-                          {% if not user.is_private %}
+                          {% if request.user.username == user.username or not user.is_private %}
                               {{ user.notes_set.count }}
                           {% else %}
                               ???
