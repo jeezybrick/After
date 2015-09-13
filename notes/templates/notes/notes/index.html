@@ -10,7 +10,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="row">
                     <div class="col-lg-6 col-md-9 col-sm-9 col-xs-12">
-                        <h1>Заметки пользователя {{ user_owner }}</h1>
+                        <h1 id="test">Заметки пользователя {{ user_owner }}</h1>
                     </div>
                     <div class="col-lg-6 col-md-3 col-sm-3 col-xs-12" style="margin-top: 25px;">
                         <a href="{% url 'user_notes_add' request.user.username %}"
@@ -69,16 +69,18 @@
                 </div>
             {% endfor %}
         </div>
-        <nav>
-            <ul class="pager">
-                {% if notes.has_previous %}
-                    <li><a href="?page={{ notes.previous_page_number }}">Previous</a></li>
-                {% endif %}
-                {% if notes.has_next %}
-                    <li><a href="?page={{ notes.next_page_number }}">Next</a></li>
-                {% endif %}
-            </ul>
-        </nav>
+        {% if is_paginated %}
+            <nav>
+                <ul class="pager">
+                    {% if paginator.has_previous %}
+                        <li><a href="?page={{ paginator.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+                    {% if notes.has_next %}
+                        <li><a href="?page={{ paginator.next_page_number }}">Next</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
     {% else %}
         <h1 class="text-center">Этот пользователь закрыл свои заметки.</h1>
     {% endif %}

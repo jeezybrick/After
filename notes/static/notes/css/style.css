@@ -52,3 +52,12 @@ float: none;
 .notes-show-color-block{
     min-height:50px;
 }
+
+#test{
+    -webkit-transition:  1s;
+    transition: font-size 1s;
+}
+
+#test:hover{
+    font-size: 50px;
+}

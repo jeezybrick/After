@@ -15,7 +15,7 @@
                 <a href="{% url 'user_notes' user.username %}">Заметки
                       <span class="badge">
                           {% if request.user.username == user.username or not user.is_private %}
-                              {{ user.notes_set.count }}
+                              {{ user.note_set.count }}
                           {% else %}
                               ???
                           {% endif %}

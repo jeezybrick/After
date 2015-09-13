@@ -98,7 +98,7 @@ class ModifyNoteForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         self.user = user
         super(ModifyNoteForm, self).__init__(*args, **kwargs)
-        # Добавляем атрибуты к fiels
+        # Добавляем атрибуты к fields
         self.fields['categories'].choices = categories_as_choices(self.user)
         self.fields['categories'].label = 'Категории'
         self.fields['labels'].label = 'Ярлыки'
